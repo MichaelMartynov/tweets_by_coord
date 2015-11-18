@@ -1,0 +1,31 @@
+{% extends "base/crud.html.twig" %}
+
+
+{% block content %}
+
+    <form role="form" action="save">
+
+        {% block form_content %}
+
+            {% for key, value in object %}
+                {% if key == object.getPk() %}
+                    {% if value %}
+                        <input type="hidden" class="form-control" id="{{ key }}" name="form[{{ key }}]" value="{{ value }}">
+                    {% endif %}
+                {% else %}
+                    <div class="form-group">
+                        <label for="key">{{ key }} :</label>
+                        <input type="text" class="form-control" id="{{ key }}" name="form[{{ key }}]" value="{{ value }}">
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        {% endblock %}
+
+        {% block form_save %}
+            <button type="submit" class="btn btn-default">Сохранить</button>
+        {% endblock %}
+
+    </form>
+
+{% endblock %}

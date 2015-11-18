@@ -1,0 +1,38 @@
+{% extends "base/template.html.twig" %}
+
+
+{% block headScript %}
+    <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="well center-block" id="map" style="width: 1000px; height: 600px"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="twitter" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><span id="clickCoord"></span></h4>
+                    <h4 class="modal-title"><span id="imageCoord"></span></h4>
+                </div>
+                <div class="modal-body" >
+                    <img src="" alt="Изображение не найдено" class="center-block img-rounded" width="500" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block footerScript %}
+    {% autoescape %}
+    <script src="/assets/app/map.js" type="text/javascript"></script>
+    {% endautoescape %}
+{% endblock %}

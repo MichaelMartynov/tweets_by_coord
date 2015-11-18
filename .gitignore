@@ -1,0 +1,14 @@
+### JetBrains settings
+
+*.iml
+.idea/
+
+### Project settings
+
+logs/*
+!*.gitkeep
+
+# composer
+composer.lock
+vendor/
+

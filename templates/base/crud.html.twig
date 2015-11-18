@@ -1,0 +1,18 @@
+{% extends "base/template.html.twig" %}
+
+
+{% block submenu %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav">
+                    {% for item in crudmenu %}
+                        <li {% if item.active %}class="active"{% endif %}><a href="{{ item.link }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+

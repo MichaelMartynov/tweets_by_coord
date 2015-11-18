@@ -1,0 +1,12 @@
+{% extends "base/template.html.twig" %}
+
+
+{% block content %}
+
+    <div class="well">
+        {% autoescape %}
+        {{ content|raw }}
+        {% endautoescape %}
+    </div>
+
+{% endblock %}

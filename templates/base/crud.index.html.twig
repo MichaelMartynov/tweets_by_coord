@@ -1,0 +1,33 @@
+{% extends "base/crud.html.twig" %}
+
+
+{% block content %}
+
+    {% block list %}
+        <table class="table table-hover">
+            {% for key in list|keys %}
+                {% if loop.index == 1 %}
+                    <tr class="row table-bordered">
+                        <th>№</th>
+                        {% for head in list[key]|keys %}
+                            <th>{{ head }}</th>
+                        {% endfor %}
+                        <th>edit</th>
+                        <th>delete</th>
+                    </tr>
+                {% endif %}
+                <tr class="row table-bordered">
+                    <td>{{ loop.index }}</td>
+                    {% for value in list[key] %}
+                        <td>
+                            {{ value }}
+                        </td>
+                    {% endfor %}
+                    <td><span class="glyphicon glyphicon-edit" onclick="window.location.assign('{{ editLink }}?id={{ list[key].id }}')"></span></td>
+                    <td><span class="glyphicon glyphicon-remove-circle" onclick="window.location.assign('{{ deleteLink }}?id={{ list[key].id }}')"></span></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block headTitle %}Michael | {{ title }}{% endblock %}</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <script src="/assets/jquery/jquery.min.js"></script>
+    {% block headScript %}{% endblock %}
+
+    {% autoescape %}
+    <style>
+        .wrapper {
+            min-width: 1000px;
+            max-width: 1000px;
+            width: auto !important;
+            width: 1000px;
+        }
+        .well {
+            position: relative;
+        }
+        .navbar-header, .navbar-nav>li {
+            float: left;
+        }
+    </style>
+    {% endautoescape %}
+</head>
+<body>
+
+<div class="wrapper center-block">
+
+    <div id="menu">
+        {% block menu %}
+            <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Главная</a>
+                    </div>
+                    <div >
+                        <ul class="nav navbar-nav">
+                            {% for item in menu %}
+                                <li {% if item.active %}class="active"{% endif %}><a href="{{ item.link }}">{{ item.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </nav>
+        {% endblock %}
+    </div>
+
+    {% block title %}
+        <h2>{{ pageTitle|default(title) }}</h2>
+    {% endblock %}
+
+    <div id="submenu">
+        {% block submenu %}
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}
+            {# for insert templateBuf content #}
+            {% autoescape %}
+            {{ content|raw }}
+            {% endautoescape %}
+        {% endblock %}
+    </div>
+
+</div>
+
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+{% block footerScript %}{% endblock %}
+
+</body>
+</html>

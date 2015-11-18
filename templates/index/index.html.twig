@@ -1,0 +1,9 @@
+{% extends "base/template.html.twig" %}
+
+{% block content %}
+
+    {% autoescape %}
+    {{ content|raw }}
+    {% endautoescape %}
+
+{% endblock %}
